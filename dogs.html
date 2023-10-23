@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="" alt="" id="x">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const x = document.getElementById('x');
+
+        async function getDogs() {
+            try {
+                const response = await axios.get('https://dog.ceo/api/breeds/image/random');
+                if (response.data.status === "success") {
+                    x.src = response.data.message;
+                } else {
+                    console.error("Failed to fetch a dog image.");
+                }
+            } catch (error) {
+                console.error("An error occurred while fetching the dog image:", error);
+            }
+        }
+
+        // Call the function to fetch and display a dog image
+        getDogs();
+    </script>
+</body>
+</html>
